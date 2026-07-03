@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartLender – Loan Approval Prediction</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 50px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #e94560;
+      letter-spacing: 1px;
+    }
+    .logo span { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+    .badge {
+      background: rgba(233,69,96,0.2);
+      border: 1px solid #e94560;
+      color: #e94560;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #e94560; }
+    .hero p {
+      font-size: 1.1rem;
+      color: #a8b2c1;
+      max-width: 620px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #e94560, #c0392b);
+      color: #fff;
+      border: none;
+      padding: 16px 48px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(233,69,96,0.5);
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin: 60px 20px 0;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 28px 36px;
+      text-align: center;
+      min-width: 160px;
+      transition: transform 0.2s;
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+    .stat-card .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #e94560;
+    }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: #a8b2c1;
+      margin-top: 6px;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 70px 40px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 32px 28px;
+      max-width: 280px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: #e94560;
+      transform: translateY(-4px);
+    }
+    .feature-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+    .feature-card p  { font-size: 0.9rem; color: #a8b2c1; line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: #555e6d;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Smart<span>Lender</span></div>
+    <div style="font-size:0.85rem;color:#a8b2c1;">ML-Powered Credit Evaluation</div>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">🤖 AI-Powered</div>
+    <h1>Smart Loan <span>Approval</span><br>Prediction System</h1>
+    <p>
+      Instantly evaluate loan applications using advanced machine learning algorithms.
+      Our XGBoost model analyses applicant profiles to deliver fast, accurate, and unbiased credit decisions.
+    </p>
+    <a href="/predict" class="btn-primary">🚀 Start Prediction</a>
+  </section>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num">94.7%</div>
+      <div class="label">Training Accuracy</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">81.1%</div>
+      <div class="label">Testing Accuracy</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">4</div>
+      <div class="label">ML Models Evaluated</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">612</div>
+      <div class="label">Training Records</div>
+    </div>
+  </div>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Instant Decisions</h3>
+      <p>Real-time loan approval predictions in seconds, eliminating lengthy manual review processes.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>High Accuracy</h3>
+      <p>XGBoost model selected after comparing Decision Tree, Random Forest, KNN, and Gradient Boosting.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Risk Detection</h3>
+      <p>Flags high-risk applicants based on credit history, income, and employment patterns.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Data-Driven</h3>
+      <p>Trained on real applicant data with SMOTE balancing and feature scaling for unbiased results.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 SmartLender &mdash; Applicant Credit Worthiness Prediction &nbsp;|&nbsp; Built with Flask &amp; XGBoost
+  </footer>
+
+</body>
+</html>

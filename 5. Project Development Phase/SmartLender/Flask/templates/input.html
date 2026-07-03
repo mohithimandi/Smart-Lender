@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartLender – Enter Applicant Details</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 50px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .logo { font-size: 1.6rem; font-weight: 700; color: #e94560; }
+    .logo span { color: #fff; }
+    .back-link {
+      color: #a8b2c1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #e94560; }
+
+    .page-header {
+      text-align: center;
+      padding: 44px 20px 30px;
+    }
+    .page-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .page-header h2 span { color: #e94560; }
+    .page-header p { color: #a8b2c1; font-size: 0.95rem; }
+
+    .form-wrapper {
+      max-width: 860px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .form-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #e94560;
+      font-weight: 600;
+      margin: 28px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(233,69,96,0.3);
+    }
+    .section-title:first-of-type { margin-top: 0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c8d0db;
+      letter-spacing: 0.3px;
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+    }
+    select:focus, input[type="number"]:focus {
+      border-color: #e94560;
+      background: rgba(255,255,255,0.1);
+    }
+    select option { background: #16213e; color: #fff; }
+    input[type="number"]::placeholder { color: #6a7584; }
+
+    .hint {
+      font-size: 0.75rem;
+      color: #6a7584;
+    }
+
+    .submit-row {
+      margin-top: 36px;
+      text-align: center;
+    }
+    input[type="submit"] {
+      background: linear-gradient(135deg, #e94560, #c0392b);
+      color: #fff;
+      border: none;
+      padding: 16px 64px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+    }
+    input[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(233,69,96,0.5);
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .form-card { padding: 24px 18px; }
+      nav { padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Smart<span>Lender</span></div>
+    <a href="/" class="back-link">← Back to Home</a>
+  </nav>
+
+  <div class="page-header">
+    <h2>Applicant <span>Details</span> Form</h2>
+    <p>Fill in all fields below to get an instant loan approval prediction</p>
+  </div>
+
+  <div class="form-wrapper">
+    <div class="form-card">
+      <form action="/submit" method="post">
+
+        <!-- Personal Information -->
+        <div class="section-title">👤 Personal Information</div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="Gender">Gender</label>
+            <select id="Gender" name="Gender" required>
+              <option value="0">Male</option>
+              <option value="1">Female</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="Married">Marital Status</label>
+            <select id="Married" name="Married" required>
+              <option value="1">Married</option>
+              <option value="0">Single / Not Married</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="Dependents">Number of Dependents</label>
+            <input type="number" id="Dependents" name="Dependents"
+                   min="0" max="10" placeholder="e.g. 0, 1, 2, 3" required/>
+            <span class="hint">Enter the number of people financially dependent on you</span>
+          </div>
+          <div class="field">
+            <label for="Education">Education Level</label>
+            <select id="Education" name="Education" required>
+              <option value="1">Graduate</option>
+              <option value="0">Not Graduate</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Employment & Income -->
+        <div class="section-title">💼 Employment & Income</div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="Self_Employed">Self Employed</label>
+            <select id="Self_Employed" name="Self_Employed" required>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ApplicantIncome">Applicant Monthly Income (₹)</label>
+            <input type="number" id="ApplicantIncome" name="ApplicantIncome"
+                   min="0" placeholder="e.g. 5000" required/>
+          </div>
+          <div class="field">
+            <label for="CoapplicantIncome">Co-Applicant Monthly Income (₹)</label>
+            <input type="number" id="CoapplicantIncome" name="CoapplicantIncome"
+                   min="0" placeholder="e.g. 0 if none" required/>
+          </div>
+        </div>
+
+        <!-- Loan Details -->
+        <div class="section-title">🏦 Loan Details</div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="LoanAmount">Loan Amount (₹ thousands)</label>
+            <input type="number" id="LoanAmount" name="LoanAmount"
+                   min="0" placeholder="e.g. 128" required/>
+            <span class="hint">Enter amount in thousands (e.g. 128 = ₹1,28,000)</span>
+          </div>
+          <div class="field">
+            <label for="Loan_Amount_Term">Loan Term (in days)</label>
+            <input type="number" id="Loan_Amount_Term" name="Loan_Amount_Term"
+                   min="0" placeholder="e.g. 360" required/>
+            <span class="hint">Standard term: 360 days (12 months)</span>
+          </div>
+          <div class="field">
+            <label for="Credit_History">Credit History</label>
+            <select id="Credit_History" name="Credit_History" required>
+              <option value="1">1 — Good Credit History</option>
+              <option value="0">0 — No / Poor Credit History</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="Property_Area">Property Area</label>
+            <select id="Property_Area" name="Property_Area" required>
+              <option value="2">Urban</option>
+              <option value="1">Semiurban</option>
+              <option value="0">Rural</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="submit-row">
+          <input type="submit" value="🔍 Predict Loan Approval"/>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
