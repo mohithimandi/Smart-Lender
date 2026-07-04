@@ -1,4 +1,4 @@
-# 🏦 Smart-Lender: Applicant Credibility Prediction for Loan Approval
+# 🏦 Smart-Lender: Smart Loan Approval Prediction System
 
 An AI-powered web application that predicts whether a loan applicant is eligible for approval based on their personal, financial, and demographic details using Machine Learning.
 
